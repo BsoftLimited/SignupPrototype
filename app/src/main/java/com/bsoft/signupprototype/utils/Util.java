@@ -12,10 +12,15 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import java.util.UUID;
+import java.util.Random;
 
 public class Util {
     public static final short ToastDuration = Toast.LENGTH_LONG;
+    private static final char[] alphas = {
+            'A', 'B', 'C', 'D', 'E', 'F', 'G', 'I', 'J', 'K', 'L', 'M',
+            'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
+            '0', '1', '2', '3', '4', '5', '6', '7', '8', '9'
+    };
 
     public static boolean saveDetail(Context context, Details details){
         try {
@@ -39,8 +44,35 @@ public class Util {
     }
 
     public static String generateUid(String username){
-        UUID.fromString(username + Time.CurrentTime().toString());
-        return username;
+        StringBuilder init = new StringBuilder();
+        for(char c : username.toCharArray()){
+            if(Character.isLowerCase(c)){
+                init.append(Character.toUpperCase(c));
+            }else if(Character.isDigit(c)){
+                init.append(alphas[(int)c]);
+            }
+        }
+
+        if(init.toString().length() <= 20) {
+            while (init.toString().length() < 20) {
+                init.append(alphas[new Random().nextInt(alphas.length)]);
+            }
+        }
+        return rearrange(init.toString());
+    }
+
+    private static String rearrange(String input){
+        StringBuilder builder = new StringBuilder();
+        while (input.length() > 0){
+            int index = new Random().nextInt(input.length());
+            builder.append(input.charAt(index));
+            StringBuilder init = new StringBuilder();
+            for (int i = 0; i < input.length(); i++){
+                if(i != index){ init.append(input.charAt(i)); }
+            }
+            input = init.toString();
+        }
+        return builder.toString();
     }
 
     public static boolean isFormValid(Context context, View... views){
