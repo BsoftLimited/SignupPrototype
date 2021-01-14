@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Signup Prototype</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+
+    <string name="successful" translatable="false">Sigup Successful!</string>
+    <string name="successful_icon" translatable="false">Signup Successful Icon</string>
+</resources>
