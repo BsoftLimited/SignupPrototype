@@ -45,7 +45,7 @@
             <AutoCompleteTextView
                 android:id="@+id/name"
                 android:layout_width="match_parent"
-                android:layout_height="35dp"
+                android:layout_height="30dp"
                 android:dropDownSelector="@color/colorPrimary"
                 android:paddingTop="0dp"
                 android:paddingBottom="0dp"
@@ -66,34 +66,99 @@
             <AutoCompleteTextView
                 android:id="@+id/surname"
                 android:layout_width="match_parent"
-                android:layout_height="35dp"
+                android:layout_height="30dp"
                 android:dropDownSelector="@color/colorPrimary"
                 android:paddingTop="0dp"
                 android:paddingBottom="0dp"
                 android:textColor="#000"
                 android:textSize="12sp" />
         </com.google.android.material.textfield.TextInputLayout>
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+        <RelativeLayout
             android:layout_marginTop="8dp"
-            android:hint="Email"
-            android:orientation="vertical"
-            android:textColorHint="@color/colorPrimary"
-            app:boxBackgroundColor="#fff"
-            app:endIconMode="none"
-            app:hintTextColor="@color/colorPrimary">
-            <AutoCompleteTextView
-                android:id="@+id/email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
                 android:layout_width="match_parent"
-                android:layout_height="35dp"
-                android:dropDownSelector="@color/colorPrimary"
-                android:paddingTop="0dp"
-                android:paddingBottom="0dp"
-                android:textColor="#000"
-                android:textSize="12sp" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:layout_height="wrap_content"
+                android:layout_toStartOf="@id/email_status"
+                android:hint="Email"
+                android:orientation="vertical"
+                android:textColorHint="@color/colorPrimary"
+                app:boxBackgroundColor="#fff"
+                app:endIconMode="none"
+                app:hintTextColor="@color/colorPrimary">
+                <AutoCompleteTextView
+                    android:id="@+id/email"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:dropDownSelector="@color/colorPrimary"
+                    android:inputType="textEmailAddress"
+                    android:paddingTop="0dp"
+                    android:paddingBottom="0dp"
+                    android:textColor="#000"
+                    android:textSize="12sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+            <TextView
+                android:id="@+id/email_status"
+                android:textSize="16sp"
+                android:gravity="center"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_width="20dp"
+                android:layout_height="30dp" />
+        </RelativeLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginRight="10dp"
+                android:elevation="5dp"
+                android:hint="State"
+                android:orientation="vertical"
+                android:textColorHint="@color/colorPrimary"
+                app:boxBackgroundColor="#fff"
+                app:hintTextColor="@color/colorPrimary">
+                <AutoCompleteTextView
+                    android:id="@+id/state"
+                    android:layout_width="120dp"
+                    android:layout_height="30dp"
+                    android:dropDownSelector="@color/colorPrimary"
+                    android:paddingTop="0dp"
+                    android:paddingBottom="0dp"
+                    android:textColor="#000"
+                    android:textSize="12sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="10dp"
+                android:elevation="5dp"
+                android:hint="LGA"
+                android:orientation="vertical"
+                android:textColorHint="@color/colorPrimary"
+                app:boxBackgroundColor="#fff"
+                app:hintTextColor="@color/colorPrimary">
+                <AutoCompleteTextView
+                    android:id="@+id/lga"
+                    android:layout_width="120dp"
+                    android:layout_height="30dp"
+                    android:dropDownSelector="@color/colorPrimary"
+                    android:paddingTop="0dp"
+                    android:paddingBottom="0dp"
+                    android:textColor="#000"
+                    android:textSize="12sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
             android:layout_width="match_parent"
@@ -108,52 +173,99 @@
             <AutoCompleteTextView
                 android:id="@+id/username"
                 android:layout_width="match_parent"
-                android:layout_height="35dp"
+                android:layout_height="30dp"
                 android:dropDownSelector="@color/colorPrimary"
-                android:inputType="textPassword"
                 android:paddingTop="0dp"
                 android:paddingBottom="0dp"
                 android:textColor="#000"
                 android:textSize="12sp" />
         </com.google.android.material.textfield.TextInputLayout>
+        <RelativeLayout
+            android:layout_marginTop="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toStartOf="@id/password_status"
+                android:hint="Password"
+                android:orientation="vertical"
+                android:textColorHint="@color/colorPrimary"
+                app:boxBackgroundColor="#fff"
+                app:endIconMode="none"
+                app:hintTextColor="@color/colorPrimary">
+                <AutoCompleteTextView
+                    android:id="@+id/password"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:dropDownSelector="@color/colorPrimary"
+                    android:inputType="textPassword"
+                    android:paddingTop="0dp"
+                    android:paddingBottom="0dp"
+                    android:textColor="#000"
+                    android:textSize="12sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+            <TextView
+                android:id="@+id/password_status"
+                android:textSize="16sp"
+                android:gravity="center"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_width="20dp"
+                android:layout_height="30dp" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_marginTop="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toStartOf="@id/repassword_status"
+                android:hint="Repassword"
+                android:orientation="vertical"
+                android:textColorHint="@color/colorPrimary"
+                app:boxBackgroundColor="#fff"
+                app:endIconMode="none"
+                app:hintTextColor="@color/colorPrimary">
+                <AutoCompleteTextView
+                    android:id="@+id/repassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:dropDownSelector="@color/colorPrimary"
+                    android:inputType="textPassword"
+                    android:paddingTop="0dp"
+                    android:paddingBottom="0dp"
+                    android:textColor="#000"
+                    android:textSize="12sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+            <TextView
+                android:id="@+id/repassword_status"
+                android:textSize="16sp"
+                android:gravity="center"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_width="20dp"
+                android:layout_height="30dp" />
+        </RelativeLayout>
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:hint="Password"
+            android:hint="Phone Number"
             android:orientation="vertical"
             android:textColorHint="@color/colorPrimary"
             app:boxBackgroundColor="#fff"
             app:endIconMode="none"
             app:hintTextColor="@color/colorPrimary">
             <AutoCompleteTextView
-                android:id="@+id/password"
+                android:id="@+id/number"
                 android:layout_width="match_parent"
-                android:layout_height="35dp"
-                android:dropDownSelector="@color/colorPrimary"
-                android:inputType="textPassword"
-                android:paddingTop="0dp"
-                android:paddingBottom="0dp"
-                android:textColor="#000"
-                android:textSize="12sp" />
-        </com.google.android.material.textfield.TextInputLayout>
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:hint="Repassword"
-            android:orientation="vertical"
-            android:textColorHint="@color/colorPrimary"
-            app:boxBackgroundColor="#fff"
-            app:endIconMode="none"
-            app:hintTextColor="@color/colorPrimary">
-            <AutoCompleteTextView
-                android:id="@+id/repassword"
-                android:layout_width="match_parent"
-                android:layout_height="35dp"
-                android:inputType="textPassword"
+                android:layout_height="30dp"
+                android:inputType="number"
                 android:dropDownSelector="@color/colorPrimary"
                 android:paddingTop="0dp"
                 android:paddingBottom="0dp"

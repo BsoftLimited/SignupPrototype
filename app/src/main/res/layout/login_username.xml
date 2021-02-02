@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView
+        android:layout_above="@id/username_layout"
+        android:layout_marginStart="30dp"
+        android:layout_marginLeft="30dp"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:text="Login:"
+        android:layout_marginBottom="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/sigup_btn"
+        android:layout_above="@id/username_layout"
+        android:layout_alignRight="@id/username_layout"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:text="Sign Up"
+        android:clickable="true"
+        android:focusable="true"
+        android:layout_marginBottom="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/username_layout"
+        android:layout_centerInParent="true"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="30dp"
+        android:hint="Username"
+        android:orientation="vertical"
+        android:textColorHint="@color/colorPrimary"
+        app:boxBackgroundColor="#fff"
+        app:endIconMode="none"
+        app:hintTextColor="@color/colorPrimary">
+        <AutoCompleteTextView
+            android:id="@+id/username"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:dropDownSelector="@color/colorPrimary"
+            android:paddingTop="0dp"
+            android:paddingBottom="0dp"
+            android:textColor="#000"
+            android:textSize="12sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/password_layout"
+        android:layout_below="@id/username_layout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="30dp"
+        android:hint="Password"
+        android:orientation="vertical"
+        android:textColorHint="@color/colorPrimary"
+        app:boxBackgroundColor="#fff"
+        app:endIconMode="none"
+        app:hintTextColor="@color/colorPrimary">
+        <AutoCompleteTextView
+            android:id="@+id/password"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:dropDownSelector="@color/colorPrimary"
+            android:paddingTop="0dp"
+            android:paddingBottom="0dp"
+            android:inputType="textPassword"
+            android:textColor="#000"
+            android:textSize="12sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.button.MaterialButton
+        android:layout_alignEnd="@id/password_layout"
+        android:layout_alignRight="@id/password_layout"
+        android:layout_below="@id/password_layout"
+        android:id="@+id/submit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/colorPrimary"
+        android:elevation="12dp"
+        android:gravity="center"
+        android:text="Submit"
+        android:textColor="#fff"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:cornerRadius="6dp"
+        app:rippleColor="#fff"
+        app:strokeColor="#000" />
+</RelativeLayout>

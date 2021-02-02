@@ -5,4 +5,6 @@
 
     <string name="successful" translatable="false">Sigup Successful!</string>
     <string name="successful_icon" translatable="false">Signup Successful Icon</string>
+    <string name="fa_close" translatable="false">&#xf057;</string>
+    <string name="fa_check" translatable="false">&#xf00c;</string>
 </resources>

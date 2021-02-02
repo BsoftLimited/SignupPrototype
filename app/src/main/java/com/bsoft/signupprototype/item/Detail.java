@@ -2,29 +2,34 @@ package com.bsoft.signupprototype.item;
 
 import java.io.Serializable;
 
-public class Detail implements Serializable {
-    String uid, name, surname, username, password, email;
+public class Detail extends Credential{
+    String name, surname, email, state, lga, number;
+    public Detail(String uid, String username, String password){
+        super(uid, username, password);
+    }
 
-    public Detail(String uid, String name, String surname){
+    public void setName(String name) {
         this.name = name;
+    }
+
+    public void setSurname(String surname) {
         this.surname = surname;
-        this.uid = uid;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public void setEmail(String email) {
         this.email = email;
     }
 
-    public String getUid() {
-        return uid;
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    public void setLga(String lga) {
+        this.lga = lga;
+    }
+
+    public void setNumber(String number) {
+        this.number = number;
     }
 
     public String getName() {
@@ -35,15 +40,19 @@ public class Detail implements Serializable {
         return surname;
     }
 
-    public String getUsername() {
-        return username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
     public String getEmail() {
         return email;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public String getLga() {
+        return lga;
+    }
+
+    public String getNumber() {
+        return number;
     }
 }

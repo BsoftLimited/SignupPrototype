@@ -1,68 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-    <TextView
-        android:layout_above="@id/uid_layout"
-        android:layout_marginStart="30dp"
-        android:layout_marginLeft="30dp"
-        android:textStyle="bold"
-        android:textSize="20sp"
-        android:text="Login:"
-        android:layout_marginBottom="8dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-    <TextView
-        android:id="@+id/sigup_btn"
-        android:layout_above="@id/uid_layout"
-        android:layout_alignRight="@id/uid_layout"
-        android:textStyle="bold"
-        android:textSize="16sp"
-        android:text="Sign Up"
-        android:clickable="true"
-        android:focusable="true"
-        android:layout_marginBottom="8dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/uid_layout"
-        android:layout_centerInParent="true"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+    android:orientation="vertical"
+    tools:context=".Main">
+    <RelativeLayout
+        android:layout_alignParentTop="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="30dp"
-        android:hint="UID"
-        android:orientation="vertical"
-        android:textColorHint="@color/colorPrimary"
-        app:boxBackgroundColor="#fff"
-        app:endIconMode="none"
-        app:hintTextColor="@color/colorPrimary">
-        <AutoCompleteTextView
-            android:id="@+id/uid"
-            android:layout_width="match_parent"
-            android:layout_height="35dp"
-            android:dropDownSelector="@color/colorPrimary"
-            android:paddingTop="0dp"
-            android:paddingBottom="0dp"
-            android:textColor="#000"
-            android:textSize="12sp" />
-    </com.google.android.material.textfield.TextInputLayout>
-    <com.google.android.material.button.MaterialButton
-        android:layout_alignEnd="@id/uid_layout"
-        android:layout_alignRight="@id/uid_layout"
-        android:layout_below="@id/uid_layout"
-        android:id="@+id/submit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/colorPrimary"
-        android:elevation="12dp"
-        android:gravity="center"
-        android:text="Submit"
-        android:textColor="#fff"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:cornerRadius="6dp"
-        app:rippleColor="#fff"
-        app:strokeColor="#000" />
+        android:padding="10dp"
+        android:clipToPadding="false">
+        <View
+            android:id="@+id/indicator"
+            android:layout_width="0dp"
+            android:layout_alignStart="@id/tab"
+            android:layout_height="32dp"
+            android:background="@drawable/gradient_bg"/>
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tab"
+            android:layout_width="200dp"
+            android:layout_height="32dp"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/tab_bg"
+            app:tabGravity="fill"
+            app:tabMode="fixed"
+            app:tabSelectedTextColor="#ffffff"
+            app:tabIndicatorColor="@null"
+            app:tabRippleColor="@null"/>
+    </RelativeLayout>
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 </RelativeLayout>

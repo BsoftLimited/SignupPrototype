@@ -11,6 +11,7 @@ import androidx.annotation.Nullable;
 
 import com.bsoft.signupprototype.Main;
 import com.bsoft.signupprototype.R;
+import com.bsoft.signupprototype.fragments.LoginFragments.LoginUID;
 import com.bsoft.signupprototype.item.Detail;
 
 public class Preview extends BaseFragmet {
@@ -30,20 +31,14 @@ public class Preview extends BaseFragmet {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        TextView uid = view.findViewById(R.id.uid);
-        uid.setText(String.format("UID: %s", detail.getUid()));
-
-        TextView name = view.findViewById(R.id.name);
-        name.setText(String.format("Name: %s", detail.getName()));
-
-        TextView surname = view.findViewById(R.id.surname);
-        surname.setText(String.format("Surname: %s", detail.getSurname()));
-
-        TextView email = view.findViewById(R.id.email);
-        email.setText(String.format("Email: %s", detail.getEmail()));
-
-        TextView username = view.findViewById(R.id.username);
-        username.setText(String.format("Username: %s", detail.getUsername()));
+        ((TextView)view.findViewById(R.id.uid)).setText(String.format("UID: %s", detail.getUid()));
+        ((TextView)view.findViewById(R.id.name)).setText(String.format("Name: %s", detail.getName()));
+        ((TextView)view.findViewById(R.id.surname)).setText(String.format("Surname: %s", detail.getSurname()));
+        ((TextView)view.findViewById(R.id.email)).setText(String.format("Email: %s", detail.getEmail()));
+        ((TextView)view.findViewById(R.id.username)).setText(String.format("Username: %s", detail.getUsername()));
+        ((TextView)view.findViewById(R.id.password)).setText(String.format("Password: %s", detail.getPassword()));
+        ((TextView)view.findViewById(R.id.state)).setText(String.format("State: %s", detail.getState()));
+        ((TextView)view.findViewById(R.id.lga)).setText(String.format("Local Government: %s", detail.getLga()));
 
         view.findViewById(R.id.done).setOnClickListener(new View.OnClickListener() {
             @Override

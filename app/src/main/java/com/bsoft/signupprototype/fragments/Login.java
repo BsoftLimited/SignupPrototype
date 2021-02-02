@@ -4,26 +4,29 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AutoCompleteTextView;
-import android.widget.Toast;
+import android.widget.FrameLayout;
+import android.widget.RelativeLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
+import androidx.viewpager.widget.ViewPager;
 
+import com.bsoft.signupprototype.Adapters.TabAdapter;
 import com.bsoft.signupprototype.Main;
 import com.bsoft.signupprototype.R;
-import com.bsoft.signupprototype.item.Detail;
-import com.bsoft.signupprototype.utils.Details;
-import com.bsoft.signupprototype.utils.Util;
+import com.bsoft.signupprototype.fragments.LoginFragments.LoginUsername;
+import com.bsoft.signupprototype.fragments.LoginFragments.LoginUID;
+import com.google.android.material.tabs.TabLayout;
 
-public class Login extends BaseFragmet implements View.OnClickListener {
-    AutoCompleteTextView uid;
+public class Login extends BaseFragmet {
+    TabLayout mTabs;
+    View mIndicator;
+    ViewPager mViewPager;
+    int indicatorWidth = 0;
 
     public Login(Main parent) {
         super(parent);
     }
-
 
     @Nullable
     @Override
@@ -34,38 +37,49 @@ public class Login extends BaseFragmet implements View.OnClickListener {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        view.findViewById(R.id.submit).setOnClickListener(this);
-        view.findViewById(R.id.sigup_btn).setOnClickListener(this);
-        uid = view.findViewById(R.id.uid);
-        uid.setTag("UID");
-    }
+        mTabs = view.findViewById(R.id.tab);
+        mIndicator = view.findViewById(R.id.indicator);
+        mViewPager = view.findViewById(R.id.viewPager);
 
-    @Override
-    public void onClick(View view) {
-        switch (view.getId()){
-            case R.id.submit:
-                if(Util.isFormValid(requireContext(), uid)){
-                    process();
-                }
-                break;
-            case R.id.sigup_btn:
-                parent.setFragment(new Signup(parent));
-                break;
-        }
-    }
+        //Set up the view pager and fragments
+        TabAdapter adapter = new TabAdapter(getChildFragmentManager());
+        adapter.addFragment(new LoginUID(parent), "UID");
+        adapter.addFragment(new LoginUsername(parent), "Username");
+        mViewPager.setAdapter(adapter);
+        mTabs.setupWithViewPager(mViewPager);
 
-    private void process(){
-        boolean found = false;
-        for(Detail detail : parent.getDetails()){
-            if(detail.getUid().equals(uid.getText().toString())){
-                found = true;
-                parent.setFragment(new Preview(parent, detail));
-                break;
+        //Determine indicator width at runtime
+        mTabs.post(new Runnable() {
+            @Override
+            public void run() {
+                indicatorWidth = mTabs.getWidth() / mTabs.getTabCount();
+
+                //Assign new width
+                RelativeLayout.LayoutParams indicatorParams = (RelativeLayout.LayoutParams) mIndicator.getLayoutParams();
+                indicatorParams.width = indicatorWidth;
+                mIndicator.setLayoutParams(indicatorParams);
             }
-        }
+        });
 
-        if(!found) {
-            Toast.makeText(requireContext(), "User not registered", Toast.LENGTH_LONG).show();
-        }
+        mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int i, float positionOffset, int positionOffsetPx) {
+                RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams)mIndicator.getLayoutParams();
+
+                float translationOffset =  (positionOffset+i) * indicatorWidth ;
+                params.leftMargin = (int) translationOffset;
+                mIndicator.setLayoutParams(params);
+            }
+
+            @Override
+            public void onPageSelected(int i) {
+
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int i) {
+
+            }
+        });
     }
 }
